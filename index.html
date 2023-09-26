@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    
+    
+    <title>THIS ONE</title>
+</head>
+<body>
+    <main>
+        <section class="main-wrapper">
+            <div class="key-map-wrapper">
+                <h2>Key Mapping</h2>
+                <hr>
+                <ul class="key-map-list">
+                    <li>
+                        <kbd class="key-code">E</kbd>
+                        <span class="key-sound">Crash</span>
+                    </li>
+                    <li>
+                        <kbd class="key-code">R</kbd>
+                        <span class="key-sound">Ride</span>
+                    </li>
+                    <li>
+                        <kbd class="key-code">F</kbd>
+                        <span class="key-sound">Floor tom</span>
+                    </li>
+                    <li>
+                        <kbd class="key-code">G</kbd>
+                        <span class="key-sound">Mid tom</span>
+                    </li>
+                    <li>
+                        <kbd class="key-code">H</kbd>
+                        <span class="key-sound">High tom</span>
+                    </li>
+                    <li>
+                        <kbd class="key-code">V</kbd>
+                        <kbd class="key-code">B</kbd>
+                        <span class="key-sound">Kick</span>
+                    </li>
+                    <li>
+                        <kbd class="key-code">J</kbd>
+                        <span class="key-sound">Snare</span>
+                    </li>
+                    <li>
+                        <kbd class="key-code">I</kbd>
+                        <span class="key-sound">Hi-Hat Open</span>
+                    </li>
+                    <li>
+                        <kbd class="key-code">K</kbd>
+                        <span class="key-sound">Hi-Hat Closed</span>
+                    </li>
+                </ul>
+            </div>
+            <h1 class="main-title">Javascript Drum Kit</h1>
+            <div class="drum-kit-wrapper">
+                
+                <img id="crash-ride" class="crash-cymbal" src="https://raw.githubusercontent.com/ArunMichaelDsouza/javascript-30-course/master/src/01-javascript-drum-kit/img/crash.png" alt="crash cymbal">
+                <img id="hihat-top" class="hihat-top-cymbal" src="https://raw.githubusercontent.com/ArunMichaelDsouza/javascript-30-course/master/src/01-javascript-drum-kit/img/hihat-top.png" alt="Hi Hat Cymbal">
+                <div data-key="74" class="key snare">
+                    <kbd>J</kbd>
+                </div>
+                <div data-key="66" class="key kick">
+                    <kbd>B</kbd>
+                </div>
+                <div data-key="86" class="key kick2">
+                    <kbd>V</kbd>
+                </div>
+                <div data-key="72" class="key tom-high">
+                    <kbd>H</kbd>
+                </div>
+                <div data-key="71" class="key tom-mid">
+                    <kbd>G</kbd>
+                </div>
+                <div data-key="70" class="key tom-low">
+                    <kbd>F</kbd>
+                </div>
+                <div data-key="69" class="key crash">
+                    <kbd>E</kbd>
+                </div>
+                <div data-key="82" class="key ride">
+                    <kbd>R</kbd>
+                </div>
+                <div data-key="73" class="key hihat-open">
+                    <kbd>I</kbd>
+                </div>
+                <div data-key="75" class="key hihat-close">
+                    <kbd>K</kbd>
+                </div>
+                <img class="drum-kit" src="https://raw.githubusercontent.com/ArunMichaelDsouza/javascript-30-course/master/src/01-javascript-drum-kit/img/drum-kit.png" alt="drum kit">
+            </div>
+        </section>
+    </main>
+    <!--<audio data-key="74" src="audio/src_01-javascript-drum-kit_sounds_snare.wav"></audio>
+    <audio data-key="66" src="audio/src_01-javascript-drum-kit_sounds_kick.wav"></audio>
+    <audio data-key="86" src="audio/src_01-javascript-drum-kit_sounds_kick.wav"></audio>
+    <audio data-key="72" src="audio/src_01-javascript-drum-kit_sounds_tom-high.wav"></audio>
+    <audio data-key="71" src="audio/src_01-javascript-drum-kit_sounds_tom-mid.wav"></audio>
+    <audio data-key="70" src="audio/src_01-javascript-drum-kit_sounds_tom-low.wav"></audio>
+    <audio data-key="69" src="audio/src_01-javascript-drum-kit_sounds_crash.wav"></audio>
+    <audio data-key="82" src="audio/src_01-javascript-drum-kit_sounds_ride.wav"></audio>
+    <audio data-key="73" src="audio/src_01-javascript-drum-kit_sounds_hihat-open.wav"></audio>
+    <audio data-key="75" src="audio/src_01-javascript-drum-kit_sounds_hihat-close.wav"></audio>-->
+    <script>
+   
+        let snare= new Audio('audio/src_01-javascript-drum-kit_sounds_snare.wav');
+        let kick= new Audio('audio/src_01-javascript-drum-kit_sounds_kick.wav');
+        let kick2= new Audio('audio/src_01-javascript-drum-kit_sounds_kick.wav');
+        let tomHigh= new Audio('audio/src_01-javascript-drum-kit_sounds_tom-high.wav');
+        let tomMid= new Audio('audio/src_01-javascript-drum-kit_sounds_tom-mid.wav');
+        let tomLow= new Audio('audio/src_01-javascript-drum-kit_sounds_tom-low.wav');
+        let crash= new Audio('audio/src_01-javascript-drum-kit_sounds_crash.wav');
+        let ride= new Audio('audio/src_01-javascript-drum-kit_sounds_ride.wav');
+        let hiHatOpen= new Audio('audio/src_01-javascript-drum-kit_sounds_hihat-open.wav');
+        let hiHatClose= new Audio('audio/src_01-javascript-drum-kit_sounds_hihat-close.wav');
+        var cymbal = document.getElementById('crash-ride');    
+        var hiHat = document.getElementById('hihat-top');
+        let animateHiHatClosed = () => {
+		hiHat.style.top = '171px';
+	};
+        let animateCrashOrRide = () => {
+		crashRide.style.transform = 'rotate(0deg) scale(1.5)';
+	};
+        let removeAnimateHiHatClose = () => {
+            hiHat.style.top = '180px'
+        }
+        
+
+        document.addEventListener('keydown', function(info){
+            if(info.code=="KeyJ"){
+                snare.currentTime = 0;
+                snare.play();
+            }
+            if(info.code=="KeyB"){
+                kick.currentTime = 0;
+                kick.play();
+            }
+            if(info.code=="KeyV"){
+                kick2.currentTime = 0;
+                kick2.play();
+            }
+            if(info.code=="KeyH"){
+                tomHigh.currentTime = 0;
+                tomHigh.play();
+            }
+            if(info.code=="KeyG"){
+                tomMid.currentTime = 0;
+                tomMid.play();
+            }
+            if(info.code=="KeyF"){
+                tomLow.currentTime = 0;
+                tomLow.play();
+            }
+            if(info.code=="KeyE"){
+                crash.currentTime = 0;
+                crash.play();
+                animateCrashOrRide();
+                
+            }
+            if(info.code=="KeyR"){
+                ride.currentTime = 0;
+                ride.play();
+                cymbal.style.transform = 'rotate(10deg) scale(1.5)';
+            }
+            if(info.code=="KeyI"){
+                hiHatOpen.currentTime = 0;
+                hiHatOpen.play();
+            }
+            if(info.code=="KeyK"){
+                hiHatClose.currentTime = 0;
+                hiHatClose.play();
+                hiHat.style.top = '171px';
+                 return removeAnimateHiHatClose
+
+                
+                
+            }
+        })
+            
+    </script>
+</body>
+
+</html>
